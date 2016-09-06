@@ -1,0 +1,13 @@
+{
+  "name": "seatgeek-example-server",
+  "version": "1.0.0",
+  "description": "Example server for SeatGeek Javascript API wrapper",
+  "main": "SeatGeek.js",
+  "scripts": {},
+  "author": "Nick Olinger",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "promise": "^7.1.1"
+  }
+}

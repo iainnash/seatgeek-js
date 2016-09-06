@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" />
+    <link rel="stylesheet" href="styles/agate.css">
+
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>All events sample</h1>
+        <pre>
+                <code class="Javascript">
+    var s = new SeatGeek("YOUR_API_KEY");
+    s.allEvents().get().then(function(res){
+        console.log(res)
+    });
+                </code>
+            </pre>
+
+        <h1>Results</h1>
+        <pre>
+                <code id="allEventsResults" class="JSON">   
+                </code>
+            </pre>
+    </div>
+
+
+
+
+    <script type="text/javascript" src="bundle.js"></script>
+    <script src="scripts/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+        var s = new SeatGeek("");
+        s.allEvents().get().then(function(res) {
+            document.getElementById('allEventsResults').innerHTML = JSON.stringify(JSON.parse(res), null, 2);;
+        });
+    </script>
+</body>
+
+</html>

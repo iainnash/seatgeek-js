@@ -1,0 +1,26 @@
+{
+  "name": "seatgeek-api-js",
+  "version": "1.0.0",
+  "description": "A wrapper for the SeatGeek API written in Javascript",
+  "main": "SeatGeek.js",
+  "scripts": {},
+  "keywords": [
+    "seatgeek",
+    "events",
+    "ticket",
+    "api"
+  ],
+  "author": "Nick Olinger",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "colors": "^1.1.2",
+    "express": "^4.14.0",
+    "json-loader": "^0.5.4",
+    "mocha": "^3.0.2",
+    "promise": "^7.1.1",
+    "prompt": "^1.0.0",
+    "request": "^2.74.0",
+    "rewire": "^2.5.2"
+  }
+}
