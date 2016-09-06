@@ -13,10 +13,7 @@ prompt.get({
         }
     }
 }, function (err, result) {
-    console.log(colors.cyan("You said your name is: " + result.name));
-
     file.API_KEY = result.apiKey;
-
     fs.writeFile(fileName, JSON.stringify(file), function (err) {
         if (err) return console.log(err);
         console.log('api key saved to config file!');
