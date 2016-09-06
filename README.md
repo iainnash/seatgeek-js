@@ -6,6 +6,8 @@ This library works with the SeatGeek API to provide an easy way to consume their
 To see simple examples of client or server, refer to `examples/client` and `examples/sever`
 
 ## Getting started
+- Install via npm : `npm install seatgeek-js`
+- Require the module `var SeatGeek = require('seatgeek-js')`
 - Obtain an [API key from SeatGeek] (https://seatgeek.com/?next=%2Faccount%2Fdevelop#login).
 - Initialize the `SeatGeek` object
 ```javascript
@@ -16,16 +18,20 @@ var seatgeek = new SeatGeek("YOUR_API_KEY");
 
 **Node.js Express sample server**  
 
-```javascript
-var SeatGeek = require('SeatGeek.js');
-var seatgeek = new SeatGeek("YOUR_API_KEY");
+- requires express.js:  `npm install express --save"  
 
+```javascript
+var SeatGeek = require('seatgeek-js');
+var seatgeek = new SeatGeek("YOUR_API_KEY");
+var express = require('express');
+var app = express();
 app.listen(3001);
 app.get('/events', _getAllEvents);
 
 function _getAllEvents(request, response) {
+    console.log('here')
   return seatgeek.allEvents().get().then(function (res) {
-  
+      response.send(res)
   });
 }
 ```
