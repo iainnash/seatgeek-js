@@ -53,6 +53,7 @@ To invoke a request, `.get()` must be chained on all operations.
 ### allEvents
 **Purpose:** Retrieve all events (result set is returned in pages. See chaining for additional options)
 ```javascript
+var _seatgeek = new SeatGeek("YOUR_API_KEY");
 _seatgeek.allEvents().get().then(function(res) {
 
 });
@@ -61,6 +62,7 @@ _seatgeek.allEvents().get().then(function(res) {
 ### eventById
 **Purpose:** Retrieve one specific event with an event ID.
 ```javascript
+var _seatgeek = new SeatGeek("YOUR_API_KEY");
 _seatgeek.eventById().get().then(function(res) {
 
 });
@@ -74,7 +76,8 @@ _seatgeek.eventById().get().then(function(res) {
 
 **Usage**
 ```javascript
-seatgeek.allEvents()
+var _seatgeek = new SeatGeek("YOUR_API_KEY");
+_seatgeek.allEvents()
         .per_page(20)
         .page(5)
         .get()
