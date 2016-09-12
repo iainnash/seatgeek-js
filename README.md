@@ -30,7 +30,7 @@ app.get('/events', _getAllEvents);
 
 function _getAllEvents(request, response) {
     console.log('here')
-  return seatgeek.Event.allEvents().get().then(function (res) {
+  return seatgeek.Events.all().get().then(function (res) {
       response.send(res)
   });
 }
@@ -40,30 +40,32 @@ function _getAllEvents(request, response) {
 ```javascript
 var _seatgeek = new SeatGeek("YOUR_API_KEY");
 
-_seatgeek.Event.allEvents().get().then(function(res) {
+_seatgeek.Events.all().get().then(function(res) {
 
 });
 ```
 
-## Currently Supported methods
+# Currently Supported methods
 
 All functions documented below will be available on the `SeatGeek` object unless otherwise noted.  
 To invoke a request, `.get()` must be chained on all operations.
 
-### allEvents
+## Events
+
+### Events.all()
 **Purpose:** Retrieve all events (result set is returned in pages. See chaining for additional options)
 ```javascript
 var _seatgeek = new SeatGeek("YOUR_API_KEY");
-_seatgeek.Event.allEvents().get().then(function(res) {
+_seatgeek.Events.all().get().then(function(res) {
 
 });
 ```
 
-### eventById
+### Events.byId()
 **Purpose:** Retrieve one specific event with an event ID.
 ```javascript
 var _seatgeek = new SeatGeek("YOUR_API_KEY");
-_seatgeek.Event.eventbyId().get().then(function(res) {
+_seatgeek.Events.byId(739515).get().then(function(res) {
 
 });
 ```
@@ -77,11 +79,40 @@ _seatgeek.Event.eventbyId().get().then(function(res) {
 **Usage**
 ```javascript
 var _seatgeek = new SeatGeek("YOUR_API_KEY");
-_seatgeek.Event.allEvents()
+_seatgeek.Events.all()
         .per_page(20)
         .page(5)
         .get()
         .then(function (res) {
         }
+```
+
+## Performers
+
+### Performers.byId()
+**Purpose:** Retrieve one specific performer with a performer ID.
+```javascript
+var _seatgeek = new SeatGeek("YOUR_API_KEY");
+_seatgeek.Performers.byId(3).get().then(function(res) {
+
+});
+```
+
+### Performers.byName()
+**Purpose:** Retrieve one specific performer by name.
+```javascript
+var _seatgeek = new SeatGeek("YOUR_API_KEY");
+_seatgeek.Performers.byName('New York Mets').get().then(function(res) {
+
+});
+```
+
+### Performers.bySearch()
+**Purpose:** Retrieve one specific performer by name.
+```javascript
+var _seatgeek = new SeatGeek("YOUR_API_KEY");
+_seatgeek.Performers.bySearch('red hot').get().then(function(res) {
+
+});
 ```
 
