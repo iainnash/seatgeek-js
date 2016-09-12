@@ -14,7 +14,8 @@
         <pre>
                 <code class="Javascript">
     var s = new SeatGeek("YOUR_API_KEY");
-    s.allEvents().get().then(function(res){
+
+    s.Event.allEvents().get().then(function(res){
         console.log(res)
     });
                 </code>
@@ -34,8 +35,8 @@
     <script src="scripts/highlight.pack.js"></script>
     <script>
         hljs.initHighlightingOnLoad();
-        var s = new SeatGeek("");
-        s.allEvents().get().then(function(res) {
+        var s = new SeatGeek("MjkyOTA5NnwxNDcyNjExMDk5");
+        s.Event.allEvents().get().then(function(res) {
             document.getElementById('allEventsResults').innerHTML = JSON.stringify(JSON.parse(res), null, 2);;
         });
     </script>

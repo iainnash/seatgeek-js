@@ -30,22 +30,22 @@ describe("Events", function () {
          _seatgeek = new _seatgeekRewired(apiKey);
     })
     describe("allEvents", function () {
-        _seatgeek = new seatgeek(apiKey);
 
-        it('should set the request_url correctly', function () {
-            _seatgeek.allEvents();
-            expect(_seatgeek.request_url)
+        it('should set the requestUrl correctly', function () {
+            _seatgeek.Event.allEvents();
+            expect(_seatgeek.Event.requestUrl)
             .to
-            .equal('https://api.seatgeek.com/2/events?client_id='+ _seatgeek.client_id);
+            .equal('https://api.seatgeek.com/2/events?client_id='+ apiKey);
+            
         });
     });
 
     describe("eventById", function () {
-        it('should set the request_url correctly', function () {
-            _seatgeek.eventById('1');
-            expect(_seatgeek.request_url)
+        it('should set the requestUrl correctly', function () {
+            _seatgeek.Event.eventById('1');
+            expect(_seatgeek.Event.requestUrl)
             .to
-            .equal('https://api.seatgeek.com/2/events/1?client_id='+ _seatgeek.client_id);
+            .equal('https://api.seatgeek.com/2/events/1?client_id='+ apiKey);
         });
     });
 });
@@ -57,15 +57,15 @@ describe("Result Manipulation", function () {
          _seatgeek = new seatgeek(apiKey);
     })
     describe("per_page", function () {
-        it('should set the request_url correctly', function () {
-            _seatgeek.allEvents().per_page(10);
-            expect(_seatgeek.request_url)
+        it('should set the requestUrl correctly', function () {
+            _seatgeek.Event.allEvents().perPage(10);
+            expect(_seatgeek.Event.requestUrl)
             .to
-            .equal('https://api.seatgeek.com/2/events?client_id='+ _seatgeek.client_id + '&per_page=10');
+            .equal('https://api.seatgeek.com/2/events?client_id='+ apiKey + '&per_page=10');
         });
 
         it('should limit the API results', function (done) {
-            return _seatgeek.allEvents().per_page(5).get().then(function(res){
+            return _seatgeek.Event.allEvents().perPage(5).get().then(function(res){
                 res = JSON.parse(res);
                 expect(res.meta.per_page).to.equal(5);
                 expect(res.events.length).to.equal(5);
@@ -75,15 +75,15 @@ describe("Result Manipulation", function () {
     });
 
     describe("page", function () {
-        it('should set the request_url correctly', function () {
-            _seatgeek.allEvents().page(22);
-            expect(_seatgeek.request_url)
+        it('should set the requestUrl correctly', function () {
+            _seatgeek.Event.allEvents().page(22);
+            expect(_seatgeek.Event.requestUrl)
             .to
-            .equal('https://api.seatgeek.com/2/events?client_id='+ _seatgeek.client_id + '&page=22');
+            .equal('https://api.seatgeek.com/2/events?client_id='+ apiKey + '&page=22');
         });
 
         it('should retrieve the correct page number', function (done) {
-            return _seatgeek.allEvents().page(22).get().then(function(res){
+            return _seatgeek.Event.allEvents().page(22).get().then(function(res){
                 res = JSON.parse(res);
                 expect(res.meta.page).to.equal(22);
                 done();
