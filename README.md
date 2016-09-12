@@ -30,7 +30,7 @@ app.get('/events', _getAllEvents);
 
 function _getAllEvents(request, response) {
     console.log('here')
-  return seatgeek.allEvents().get().then(function (res) {
+  return seatgeek.Event.allEvents().get().then(function (res) {
       response.send(res)
   });
 }
@@ -40,7 +40,7 @@ function _getAllEvents(request, response) {
 ```javascript
 var _seatgeek = new SeatGeek("YOUR_API_KEY");
 
-_seatgeek.allEvents().get().then(function(res) {
+_seatgeek.Event.allEvents().get().then(function(res) {
 
 });
 ```
@@ -54,7 +54,7 @@ To invoke a request, `.get()` must be chained on all operations.
 **Purpose:** Retrieve all events (result set is returned in pages. See chaining for additional options)
 ```javascript
 var _seatgeek = new SeatGeek("YOUR_API_KEY");
-_seatgeek.allEvents().get().then(function(res) {
+_seatgeek.Event.allEvents().get().then(function(res) {
 
 });
 ```
@@ -63,7 +63,7 @@ _seatgeek.allEvents().get().then(function(res) {
 **Purpose:** Retrieve one specific event with an event ID.
 ```javascript
 var _seatgeek = new SeatGeek("YOUR_API_KEY");
-_seatgeek.eventById().get().then(function(res) {
+_seatgeek.Event.eventbyId().get().then(function(res) {
 
 });
 ```
@@ -77,7 +77,7 @@ _seatgeek.eventById().get().then(function(res) {
 **Usage**
 ```javascript
 var _seatgeek = new SeatGeek("YOUR_API_KEY");
-_seatgeek.allEvents()
+_seatgeek.Event.allEvents()
         .per_page(20)
         .page(5)
         .get()
