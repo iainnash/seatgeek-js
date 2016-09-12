@@ -10,8 +10,6 @@ class SeatGeekRequest {
   }
 
   makeAPIRequest(reqUrl) {
-    console.log('the url:');
-    console.log(reqUrl)
     return new Promise(function executeReq(resolve, reject) {
       return request.get({
         url: reqUrl,
