@@ -1,28 +1,22 @@
 'use strict';
-const request = require('request');
-const Promise = require('promise');
+//var fetch = require('node-fetch');
 
-class SeatGeekRequest {
+export default class SeatGeekRequest {
   constructor(clientId) {
     this.clientId = clientId;
     this.requestUrl = '';
     this.baseAPIUrl = 'https://api.seatgeek.com/2';
   }
-
   makeAPIRequest(reqUrl) {
-    return new Promise(function executeReq(resolve, reject) {
-      return request.get({
-        url: reqUrl,
+    console.log('url', typeof reqUrl);
+    return fetch(reqUrl, {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: false,
-      }, function apiSuccess(err, data, res) {
-        if (err) {
-          reject(err);
-        }
-        else {
-          resolve(res);
-        }
-      });
+    }).then(function(res) {
+      if (res.ok) {
+        return res.json();
+      }
+      return res;
     });
   }
   createRequestUrl(endpointDict, clientId) {
@@ -38,10 +32,13 @@ class SeatGeekRequest {
   getClientIdStr(clientId) {
     return '?client_id=' + clientId;
   }
+  query(param, url) {
+    return url + '&q='  + param;
+  }
   get(url) {
     return this.makeAPIRequest(url);
   }
-  perPage(resultsPerPage, url) { 
+  perPage(resultsPerPage, url) {
     return url + '&per_page=' + resultsPerPage;
   }
   page(pageNumber, url) {
@@ -51,5 +48,3 @@ class SeatGeekRequest {
     return url + '&sort=' + type + '.' + direction;
   }
 }
-
-module.exports = SeatGeekRequest;

@@ -1,21 +1,21 @@
 'use strict';
-var SeatGeekRequest = require('./SeatGeekRequest');
-var _seatgeekRequest = new SeatGeekRequest();
+import SeatGeekRequest from './SeatGeekRequest';
+let _seatgeekRequest = new SeatGeekRequest();
 
-class SeatGeekPerformer extends SeatGeekRequest {
+export default class SeatGeekPerformer extends SeatGeekRequest {
   constructor(clientId) {
     super(clientId);
   }
-  performerByName(name) {
+  performerById(name) {
     const eventByIdEndpointDict = {};
     eventByIdEndpointDict['performers'] = name.replace(/ /g,"-");
     this.requestUrl = _seatgeekRequest.createRequestUrl(eventByIdEndpointDict, this.clientId);
     return this;
   }
-  performerById(id) {
-    const performerByIdEndpointDict = {};
-    performerByIdEndpointDict['performers'] = id;
-    this.requestUrl = _seatgeekRequest.createRequestUrl(performerByIdEndpointDict, this.clientId);
+  performerByName() {
+    const eventByIdEndpointDict = {};
+    eventByIdEndpointDict['performers'] = '';
+    this.requestUrl = _seatgeekRequest.createRequestUrl(eventByIdEndpointDict, this.clientId);
     return this;
   }
   perPage(reqPerPage) {
@@ -26,9 +26,11 @@ class SeatGeekPerformer extends SeatGeekRequest {
     this.requestUrl = _seatgeekRequest.page(pageNumber, this.requestUrl);
     return this;
   }
+  query(query) {
+    this.requestUrl = _seatgeekRequest.query(query, this.requestUrl);
+    return this;
+  }
   get() {
     return _seatgeekRequest.get(this.requestUrl);
   }
 }
-
-module.exports = SeatGeekEvent;

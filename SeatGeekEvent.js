@@ -1,8 +1,8 @@
 'use strict';
-var SeatGeekRequest = require('./SeatGeekRequest');
-var _seatgeekRequest = new SeatGeekRequest();
+import SeatGeekRequest from './SeatGeekRequest';
+let _seatgeekRequest = new SeatGeekRequest();
 
-class SeatGeekEvent extends SeatGeekRequest {
+export default class SeatGeekEvent extends SeatGeekRequest {
   constructor(clientId) {
     super(clientId);
   }
@@ -30,5 +30,3 @@ class SeatGeekEvent extends SeatGeekRequest {
     return _seatgeekRequest.get(this.requestUrl);
   }
 }
-
-module.exports = SeatGeekEvent;

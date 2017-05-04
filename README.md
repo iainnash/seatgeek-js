@@ -16,25 +16,6 @@ var seatgeek = new SeatGeek("YOUR_API_KEY");
 - Begin using the API by chaining methods onto the created `SeatGeek` object.  
 
 
-**Node.js Express sample server**  
-
-- requires express.js:  `npm install express --save"  
-
-```javascript
-var SeatGeek = require('seatgeek-js');
-var seatgeek = new SeatGeek("YOUR_API_KEY");
-var express = require('express');
-var app = express();
-app.listen(3001);
-app.get('/events', _getAllEvents);
-
-function _getAllEvents(request, response) {
-    console.log('here')
-  return seatgeek.Events.all().get().then(function (res) {
-      response.send(res)
-  });
-}
-```
 
 **Sample for the browser**  
 ```javascript
@@ -44,6 +25,9 @@ _seatgeek.Events.all().get().then(function(res) {
 
 });
 ```
+
+### To build for the browser:
+`npm run rollup` and the output file is in `dist/seatgeek.js`.
 
 # Currently Supported methods
 
