@@ -1,5 +1,8 @@
 'use strict';
-//var fetch = require('node-fetch');
+
+if (typeof window === 'undefined'){
+  var fetch = require('node-fetch');
+}
 
 export default class SeatGeekRequest {
   constructor(clientId) {
